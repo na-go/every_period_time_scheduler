@@ -102,12 +102,12 @@ def main():
             'timeZone': 'Japan',
         },
         'end': {
-            'dateTime': '{}-{}-{}T00:23:59'.format(here_date[0],here_date[1],here_date[2]),
+            'dateTime': '{}-{}-{}T23:59:59'.format(here_date[0],here_date[1],here_date[2]),
             'timeZone': 'Japan',
         },
         }
     # Deleate "calenderID" later when upload this to github
-        event = service.events().insert(calendarId='ここにID',
+        event = service.events().insert(calendarId='ここにcalenderID',
                                         body=event).execute()
         print (event['id'])
 
