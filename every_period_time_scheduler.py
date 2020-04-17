@@ -16,6 +16,7 @@ def Acquisition_Date(term, period):
   update_date = this_date
   update_month = this_month
   update_year = this_year
+  reservation_list = []
   while(period):
 
     if update_date + term > end_of_this_month:
@@ -32,6 +33,7 @@ def Acquisition_Date(term, period):
         update_month += 1
       over_date = update_date + term - end_of_this_month
       reservation_date = over_date
+      
       print(reservation_year,"年",reservation_month,"月",reservation_date,"日")
       update_date = over_date
 
@@ -48,7 +50,8 @@ def Acquisition_Date(term, period):
       for udate in umlr:
         if udate != 0:
           end_of_this_month = udate
+    reservation_list.append([reservation_year,reservation_month,reservation_date])
+  return reservation_list
 
-
-
-Acquisition_Date(30,10)
+date_list = Acquisition_Date(30,5)
+print(date_list)
