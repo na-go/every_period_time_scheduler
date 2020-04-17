@@ -7,9 +7,13 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+# Change on lines 93 and 99
+# Write the calenderID on 110 line
+ 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
+# Acquisition_Date_List
 def Acquisition_Date(start_year,start_month,start_date,term = 30 , period = 12):
   dt_now = datetime.datetime.now()
   this_month = start_month
@@ -17,6 +21,7 @@ def Acquisition_Date(start_year,start_month,start_date,term = 30 , period = 12):
   this_year = start_year
   this_month_list_reverse = calendar.monthcalendar(this_year, this_month)
   end_of_this_month = 0
+  # Take an "end of this month"
   for tmlr in this_month_list_reverse:
     for date in tmlr:
       if date !=0:
@@ -84,11 +89,13 @@ def main():
 
     service = build('calendar', 'v3', credentials=creds)
 
+    # Acquisition_Date(start_year,start_month,start_date,term,period)
     event_date_list = Acquisition_Date(2020,4,17,30,12)
 
     for here_date in event_date_list:
 
         event = {
+        # Title
         'summary': '御伽原江良メンバーシップ更新日',
         'start': {
             'dateTime': '{}-{}-{}T00:00:00'.format(here_date[0],here_date[1],here_date[2]),
